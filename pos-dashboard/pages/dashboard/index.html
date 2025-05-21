@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>POS Monitor Dashboard</title>
+<link rel="stylesheet" href="../../assets/css/main.css">
+<!-- Firebase App (core) -->
+<script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js"></script>
+
+<!-- (Optional) Firebase services like Auth, Firestore, etc. -->
+<script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js"></script>
+
+</head>
+<body>
+<aside class="sidebar">
+<h2 class="logo">POSMonitor</h2>
+<!-- <nav>
+<ul>
+<li class="active">Overview</li>
+<li>Transactions</li>
+<li>Terminals</li>
+<li>Merchants</li>
+<li>Alerts</li>
+</ul>
+</nav> -->
+
+<nav class="navigation">
+<a href="#">Transactions</a> 
+<a href="#">Terminals</a> 
+<a href="#">Merchants</a> 
+<a href="#">Alerts</a> 
+
+
+</nav>
+</aside>
+
+<main class="dashboard">
+<header>
+<input type="text" placeholder="Search terminals, merchants, tra" />
+<div class="right">
+<button id="exportBtn">Export</button>
+<div class="user">Amina Omaar</div></div>
+</header>
+
+<section class="summary">
+<div class="card">
+<h3>Total Revenue</h3>
+<p class="value">$45,231.89</p>
+<p class="change">+20.1% from last month</p>
+</div>
+<div class="card">
+<h3>Transaction Volume</h3>
+<p class="value">+2,350</p>
+<p class="change">+10.5% from last month</p>
+</div>
+<div class="card">
+<h3>Active Terminals</h3>
+<p class="value">128/135</p>
+<p class="change">94.8% online</p>
+</div>
+<div class="card">
+<h3>System Alerts</h3>
+<p class="value">3</p>
+<p class="change">2 critical, 1 warning</p>
+</div>
+</section>
+
+<section class="charts">
+<div class="chart-box">
+<h3>Transaction Volume</h3>
+<div class="chart-placeholder">Transaction volume chart will appear here</div>
+</div>	
+<div class="chart-box">
+<h3>Terminal Status</h3>
+<ul class="status">
+<li><span class="dot online"></span>Online - 128 (94.8%)</li>
+<li><span class="dot degraded"></span>Degraded - 4 (3.0%)</li>
+<li><span class="dot offline"></span>Offline - 3 (2.2%)</li>
+</ul>
+</div>
+</section>
+</main>
+
+<script src="../../assets/js/app.js"></script>
+<script type="module">
+  // Import the functions you need from the SDKs you need
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/11.7.3/firebase-app.js";
+  import { getAnalytics } from "https://www.gstatic.com/firebasejs/11.7.3/firebase-analytics.js";
+  // TODO: Add SDKs for Firebase products that you want to use
+  // https://firebase.google.com/docs/web/setup#available-libraries
+
+  // Your web app's Firebase configuration
+  // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+  const firebaseConfig = {
+    apiKey: "AIzaSyD9NtJjMVVyS4DHd5t7R_WayPJTnkiylmI",
+    authDomain: "pos-b43f8.firebaseapp.com",
+    projectId: "pos-b43f8",
+    storageBucket: "pos-b43f8.firebasestorage.app",
+    messagingSenderId: "551854411983",
+    appId: "1:551854411983:web:d7aa9f594a1e1ff05227ba",
+    measurementId: "G-SL6PB9L4CS"
+  };
+
+  // Initialize Firebase
+  const app = initializeApp(firebaseConfig);
+  const analytics = getAnalytics(app);
+
+console.log(app, "=============");
+console.log(analytics);
+
+</script>
+<script src="ffirebase-config.js"></script>
+
+<!-- Your app code (only after Firebase is initialized) -->
+<script src="app.js"></script>
+
+</body>
+</html>
+
+
