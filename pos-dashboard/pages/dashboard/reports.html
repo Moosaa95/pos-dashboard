@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Reports</title>
+
+  <!-- Bootstrap -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+  <!-- FontAwesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <!-- jsPDF & autoTable -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.25/jspdf.plugin.autotable.min.js"></script>
+</head>
+<body>
+  <div class="container mt-4">
+    <!-- Add Report Modal Trigger -->
+    <button id="add-button" class="btn btn-success mb-3" data-bs-toggle="modal" data-bs-target="#addModal">Add Report</button>
+
+    <!-- Add Modal -->
+    <div class="modal fade" id="addModal" tabindex="-1" aria-labelledby="addModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <form id="reports-form">
+            <div class="modal-header">
+              <h5 class="modal-title">Add Report</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <div class="mb-3">
+                <label for="terminal" class="form-label">Terminal</label>
+                <input type="text" id="terminal" name="terminal" class="form-control" required>
+              </div>
+              <div class="mb-3">
+                <label for="amount" class="form-label">Amount</label>
+                <input type="number" id="amount" name="amount" class="form-control" required>
+              </div>
+              <div class="mb-3">
+                 <select id="status" class="form-select" aria-label="Default select example" style="cursor: pointer;">
+            <option selected>Status</option>
+            <option value="Success">Success</option>
+            <option value="Failed">Failed</option>
+          </select>
+                <!-- <label for="status" class="form-label">Status</label> -->
+                <!-- <input type="text" id="status" name="status" class="form-control" required> -->
+              </div>
+              <div class="mb-3">
+                <label for="date" class="form-label">Date</label>
+                <input type="date" id="date" name="date" class="form-control" required>
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button type="submit" class="btn btn-primary">Submit</button>
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <!-- Filters -->
+    <div class="filters mb-3">
+      <select id="terminalFilter" class="form-select d-inline-block w-auto">
+        <option value="">All Terminals</option>
+        <option value="T001">T001</option>
+        <option value="T002">T002</option>
+      </select>
+      <select id="statusFilter" class="form-select d-inline-block w-auto">
+        <option value="">All Status</option>
+        <option value="success">Success</option>
+        <option value="failed">Failed</option>
+      </select>
+      <input type="date" id="startDate" class="form-control d-inline-block w-auto" />
+      <input type="date" id="endDate" class="form-control d-inline-block w-auto" />
+      <button class="btn btn-primary" onclick="applyFilters()">Apply</button>
+    </div>
+
+    <!-- Export Buttons -->
+    <div class="export-buttons mb-3">
+      <button id="pdf-button" class="btn btn-outline-danger">Export PDF</button>
+      <button id="csv-button" class="btn btn-outline-secondary">Export CSV</button>
+    </div>
+
+    <!-- Table -->
+    <table class="report-table table table-striped table-bordered text-center">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Terminal</th>
+          <th>Amount</th>
+          <th>Status</th>
+          <th>Date</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody id="reportBody"></tbody>
+    </table>
+  </div>
+
+  <script type="module" src="../../assets/js/dashboard/filters.js"></script>
+</body>
+</html>
